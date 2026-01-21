@@ -1,5 +1,5 @@
 // Inserisci qui l'URL del tuo Google Sheet pubblicato come CSV
-const sheetCSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRVhh8jA7os1Tc1cV3cNTHti2v0WKNLC0VxRmQXUAThNgHtGGd1FxC5acdeAMmCeQ/pub?gid=1376273630&single=true&output=csv';
+const sheetCSV = 'https://raw.githubusercontent.com/escursionicapanneticinosvizzera/tabellaescursioni/refs/heads/main/tabella.csv';
 
 $(document).ready(function() {
   $.get(sheetCSV, function(csvData) {
