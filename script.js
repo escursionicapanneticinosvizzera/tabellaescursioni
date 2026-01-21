@@ -1,3 +1,6 @@
+<!-- Include PapaParse before your script.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script src="script.js"></script>
 // Inserisci qui l'URL del tuo Google Sheet pubblicato come CSV
 const sheetCSV = 'https://raw.githubusercontent.com/escursionicapanneticinosvizzera/tabellaescursioni/refs/heads/main/tabella.csv';
 
