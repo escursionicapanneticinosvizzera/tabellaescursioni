@@ -1,0 +1,19 @@
+Data,Zona,Percorso,Partenza,Arrivo,Dislivello,Distanza,Filtro dislivello,Filtro distanza,Difficoltà,Giro ad anello,Laghetto,Capanna,Ristoro,Gita per bambini
+A-Qualsiasi,A-Qualsiasi,A-Qualsiasi,A-Qualsiasi,A-Qualsiasi,A-Qualsiasi,A-Qualsiasi,A-Qualsiasi,A-Qualsiasi,A-Qualsiasi,A-Qualsiasi,A-Qualsiasi,A-Qualsiasi,A-Qualsiasi,A-Qualsiasi
+7/2/2026,Bellinzonese,Giubiasco-Monti di Tiglio,Giubiasco,Monti di Tiglio,499,7,0-500m,Da 5 a 10km,T2,Si,Si,No,No,Si
+13/2/2026,Valle di Blenio,Lugano-Monte bar,Corticiasca,Monte Bar,1005,,1001-1500m,Da 0 a 5km,T3,No,No,Si,Si,Si
+,Valle Maggia,,,,1,10,0-500m,Da 5 a 10km,,,,,,
+,Leventina,,,,15,3,0-500m,Da 0 a 5km,,,,,,
+,Mesolcina,,,,560,6,501-1000m,Da 5 a 10km,,,,,,
+,Val Calanca,,,,210,18,0-500m,Da 15 a 20km,,,,,,
+,Val Onsernone,,,,2100,23,Oltre 2000m,Oltre 20km,,,,,,
+,Centovalli,,,,,,,,,,,,,
+,Locarnese,,,,,,,,,,,,,
+,Val Verzasca,,,,,,,,,,,,,
+,Luganese,,,,,,,,,,,,,
+,Sottoceneri,,,,,,,,,,,,,
+,Sopraceneri,,,,,,,,,,,,,
+,Val Rivera,,,,,,,,,,,,,
+,Val Bedretto,,,,,,,,,,,,,
+,Val Lavizzara,,,,,,,,,,,,,
+,Val Rovana,,,,,,,,,,,,,
