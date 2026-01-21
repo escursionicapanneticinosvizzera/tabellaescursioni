@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<title>Tabella Excel PRO</title>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Tabella Escursioni</title>
+
+  <!-- CSS DataTables -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <!-- PapaParse -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <!-- DataTables -->
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+  <style>
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 8px; border: 1px solid #ccc; }
+    .filter-container { display: flex; flex-direction: column; }
+    .filter-container input { margin-bottom: 4px; }
+  </style>
 </head>
 <body>
+  <h1>Tabella Escursioni</h1>
 
-<table id="excelTable" class="display" style="width:100%">
-  <thead>
-    <tr id="header-row"></tr>
-    <tr id="filter-row"></tr>
-  </thead>
-  <tbody></tbody>
-</table>
+  <table id="excelTable">
+    <thead>
+      <tr id="header-row"></tr>
+      <tr id="filter-row"></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="script.js"></script>
+  <!-- Il tuo script.js deve stare qui -->
+  <script src="script.js"></script>
 </body>
 </html>
