@@ -1,5 +1,5 @@
 // URL del CSV pubblico su GitHub (raw)
-const sheetCSV = 'https://raw.githubusercontent.com/escursionicapanneticinosvizzera/tabellaescursioni/main/tabella.csv';
+const sheetCSV = 'https://raw.githubusercontent.com/escursionicapanneticinosvizzera/tabellaescursioni/refs/heads/main/tabella.csv';
 
 $(document).ready(function() {
   // Carica CSV tramite AJAX
