@@ -4,9 +4,38 @@
     <meta charset="UTF-8">
     <title>Tabella Escursioni</title>
 
+    <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="style.css">
 
+    <!-- Stile personalizzato -->
+    <style>
+        thead .filter-container {
+            display: flex;
+            flex-direction: column;
+            max-height: 200px;
+            overflow-y: auto;
+            font-size: 12px;
+            padding: 2px;
+        }
+        .filter-container label {
+            display: block;
+            cursor: pointer;
+            margin: 2px 0;
+        }
+        .filter-search {
+            width: 95%;
+            margin-bottom: 4px;
+            padding: 2px;
+        }
+        table.dataTable th, table.dataTable td {
+            vertical-align: top;
+        }
+        @media (max-width: 768px) {
+            thead .filter-container { max-height: 150px; font-size: 10px; }
+        }
+    </style>
+
+    <!-- jQuery, PapaParse e DataTables JS -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
@@ -22,6 +51,85 @@
         <tbody></tbody>
     </table>
 
-    <script src="script.js"></script>
+    <!-- JS inline self-contained -->
+    <script>
+    // Percorso del CSV (deve essere nella root del repo)
+    const sheetCSV = 'tabella.csv';
+
+    $(document).ready(function() {
+        console.log("DOM pronto");
+
+        $.get(sheetCSV)
+        .done(function(csvData) {
+            console.log("CSV caricato:", csvData.slice(0, 100));
+
+            const data = Papa.parse(csvData, { header: true }).data;
+
+            if (!data.length) {
+                $('body').append('<p style="color:red">CSV vuoto o non leggibile</p>');
+                return;
+            }
+
+            const headers = Object.keys(data[0]);
+
+            // Creazione header e filtri
+            headers.forEach(h => {
+                $('#header-row').append(`<th>${h}</th>`);
+                $('#filter-row').append(`<th>
+                    <div class="filter-container">
+                        <input type="text" class="filter-search" placeholder="Cerca...">
+                    </div>
+                </th>`);
+            });
+
+            // Creazione righe
+            const rows = data.map(row => headers.map(h => {
+                const val = row[h];
+                return val && val.startsWith('http') ? `<a href="${val}" target="_blank">${val}</a>` : val || '';
+            }));
+
+            // Inizializza DataTable
+            const table = $('#excelTable').DataTable({ data: rows, orderCellsTop: true });
+
+            // Filtro per colonna
+            table.columns().every(function(i) {
+                const column = this;
+                const container = $('div.filter-container', $('#filter-row th').eq(i));
+
+                let vals = column.data().unique().sort().toArray().map(d => d || '(Vuoto)');
+
+                vals.forEach(val => {
+                    container.append(`<label>
+                        <input type="checkbox" class="col-filter" data-col="${i}" value="${val}"> ${val}
+                    </label>`);
+                });
+
+                // Ricerca
+                container.find('.filter-search').on('input', function() {
+                    const query = $(this).val().toLowerCase();
+                    container.find('label').each(function() {
+                        $(this).toggle($(this).text().toLowerCase().includes(query));
+                    });
+                });
+
+                // Checkbox filtro
+                container.on('change', 'input.col-filter', function() {
+                    const selected = container.find('input:checked').map(function(){ return $(this).val(); }).get();
+                    if (selected.length) {
+                        const regex = selected.map(v => v === '(Vuoto)' ? '^$' : v).join('|');
+                        column.search(regex, true, false).draw();
+                    } else {
+                        column.search('').draw();
+                    }
+                });
+            });
+
+        })
+        .fail(function() {
+            $('body').append('<p style="color:red">Errore nel caricamento del CSV</p>');
+            console.error("Errore caricamento CSV");
+        });
+    });
+    </script>
 </body>
 </html>
