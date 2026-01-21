@@ -1,80 +1,62 @@
-// URL del CSV pubblico su GitHub (raw)
-const sheetCSV = 'https://raw.githubusercontent.com/escursionicapanneticinosvizzera/tabellaescursioni/refs/heads/main/tabella.csv';
+console.log("Script caricato");
+
+const sheetCSV = 'tabella.csv'; // file CSV nella root del repo
 
 $(document).ready(function() {
-  // Carica CSV tramite AJAX
-  $.ajax({
-    url: sheetCSV,
-    dataType: 'text',
-    success: function(csvData) {
-      const data = Papa.parse(csvData, { header: true }).data;
+    console.log("DOM pronto");
 
-      if (!data.length) {
-        console.error('CSV vuoto o non accessibile');
-        return;
-      }
+    $.get(sheetCSV, function(csvData) {
+        console.log("CSV caricato:", csvData.slice(0, 100));
 
-      const headers = Object.keys(data[0]);
+        const data = Papa.parse(csvData, { header: true }).data;
+        console.log("Dati parsati:", data);
 
-      // Crea intestazioni e filtri
-      headers.forEach(h => {
-        $('#header-row').append(`<th>${h}</th>`);
-        $('#filter-row').append(`<th>
-          <div class="filter-container">
-            <input type="text" class="filter-search" placeholder="Cerca...">
-          </div>
-        </th>`);
-      });
+        if (!data.length) {
+            console.error("CSV vuoto o non leggibile");
+            return;
+        }
 
-      // Prepara i dati per DataTable (trasforma i link in <a>)
-      const rows = data.map(row => headers.map(h => {
-        const val = row[h];
-        return val && val.startsWith('http') ? `<a href="${val}" target="_blank">${val}</a>` : val || '';
-      }));
+        const headers = Object.keys(data[0]);
 
-      // Inizializza DataTable
-      const table = $('#excelTable').DataTable({
-        data: rows,
-        orderCellsTop: true
-      });
-
-      // Aggiungi filtri per ogni colonna
-      table.columns().every(function(i) {
-        const column = this;
-        const container = $('div.filter-container', $('#filter-row th').eq(i));
-
-        // Valori unici + (Vuoto)
-        let vals = column.data().unique().sort().toArray().map(d => d || '(Vuoto)');
-
-        vals.forEach(val => {
-          container.append(`<label>
-            <input type="checkbox" class="col-filter" data-col="${i}" value="${val}"> ${val}
-          </label>`);
+        headers.forEach(h => {
+            $('#header-row').append(`<th>${h}</th>`);
+            $('#filter-row').append(`<th>
+                <div class="filter-container">
+                    <input type="text" class="filter-search" placeholder="Cerca...">
+                </div>
+            </th>`);
         });
 
-        // Ricerca testo
-        container.find('.filter-search').on('input', function(){
-          const query = $(this).val().toLowerCase();
-          container.find('label').each(function(){
-            $(this).toggle($(this).text().toLowerCase().includes(query));
-          });
+        const rows = data.map(row => headers.map(h => {
+            const val = row[h];
+            return val && val.startsWith('http') ? `<a href="${val}" target="_blank">${val}</a>` : val || '';
+        }));
+
+        const table = $('#excelTable').DataTable({
+            data: rows,
+            orderCellsTop: true
         });
 
-        // Filtri checkbox
-        container.on('change', 'input.col-filter', function(){
-          const selected = container.find('input:checked').map(function(){ return $(this).val(); }).get();
-          if (selected.length) {
-            const regex = selected.map(v => v === '(Vuoto)' ? '^$' : v).join('|');
-            column.search(regex, true, false).draw();
-          } else {
-            column.search('').draw();
-          }
-        });
-      });
+        table.columns().every(function(i) {
+            const column = this;
+            const container = $('div.filter-container', $('#filter-row th').eq(i));
 
-    },
-    error: function(err) {
-      console.error('Errore caricamento CSV:', err);
-    }
-  });
-});
+            let vals = column.data().unique().sort().toArray().map(d => d || '(Vuoto)');
+
+            vals.forEach(val => {
+                container.append(`<label>
+                    <input type="checkbox" class="col-filter" data-col="${i}" value="${val}"> ${val}
+                </label>`);
+            });
+
+            container.find('.filter-search').on('input', function() {
+                const query = $(this).val().toLowerCase();
+                container.find('label').each(function() {
+                    $(this).toggle($(this).text().toLowerCase().includes(query));
+                });
+            });
+
+            container.on('change', 'input.col-filter', function() {
+                const selected = container.find('input:checked').map(function(){ return $(this).val(); }).get();
+                if (selected.length) {
+                    const regex = selected.map
