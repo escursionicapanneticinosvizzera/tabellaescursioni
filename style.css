@@ -1,0 +1,24 @@
+thead .filter-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 12px;
+    padding: 2px;
+}
+.filter-container label {
+    display: block;
+    cursor: pointer;
+    margin: 2px 0;
+}
+.filter-search {
+    width: 95%;
+    margin-bottom: 4px;
+    padding: 2px;
+}
+table.dataTable th, table.dataTable td {
+    vertical-align: top;
+}
+@media (max-width: 768px) {
+    thead .filter-container { max-height: 150px; font-size: 10px; }
+}
