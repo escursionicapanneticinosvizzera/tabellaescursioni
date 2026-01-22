@@ -53,24 +53,22 @@
 
     <!-- JS inline self-contained -->
     <script>
-    // Percorso del CSV (deve essere nella root del repo)
-    const sheetCSV = 'tabella.csv';
+    // Percorso del file JSON (deve essere nella root del repo)
+    const sheetJSON = 'tabella.json';
 
     $(document).ready(function() {
         console.log("DOM pronto");
 
-        $.get(sheetCSV)
-        .done(function(csvData) {
-            console.log("CSV caricato:", csvData.slice(0, 100));
+        $.getJSON(sheetJSON)
+        .done(function(jsonData) {
+            console.log("JSON caricato:", jsonData.slice(0, 100));
 
-            const data = Papa.parse(csvData, { header: true }).data;
-
-            if (!data.length) {
-                $('body').append('<p style="color:red">CSV vuoto o non leggibile</p>');
+            if (!jsonData.length) {
+                $('body').append('<p style="color:red">JSON vuoto o non leggibile</p>');
                 return;
             }
 
-            const headers = Object.keys(data[0]);
+            const headers = Object.keys(jsonData[0]);
 
             // Creazione header e filtri
             headers.forEach(h => {
@@ -83,7 +81,7 @@
             });
 
             // Creazione righe
-            const rows = data.map(row => headers.map(h => {
+            const rows = jsonData.map(row => headers.map(h => {
                 const val = row[h];
                 return val && val.startsWith('http') ? `<a href="${val}" target="_blank">${val}</a>` : val || '';
             }));
@@ -126,10 +124,11 @@
 
         })
         .fail(function() {
-            $('body').append('<p style="color:red">Errore nel caricamento del CSV</p>');
-            console.error("Errore caricamento CSV");
+            $('body').append('<p style="color:red">Errore nel caricamento del JSON</p>');
+            console.error("Errore caricamento JSON");
         });
     });
     </script>
 </body>
 </html>
+
