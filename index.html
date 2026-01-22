@@ -35,9 +35,8 @@
         }
     </style>
 
-    <!-- jQuery, PapaParse e DataTables JS -->
+    <!-- jQuery e DataTables JS -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
@@ -51,18 +50,12 @@
         <tbody></tbody>
     </table>
 
-    <!-- JS inline self-contained -->
     <script>
-    // Percorso del file JSON (deve essere nella root del repo)
     const sheetJSON = 'tabella.json';
 
     $(document).ready(function() {
-        console.log("DOM pronto");
-
         $.getJSON(sheetJSON)
         .done(function(jsonData) {
-            console.log("JSON caricato:", jsonData.slice(0, 100));
-
             if (!jsonData.length) {
                 $('body').append('<p style="color:red">JSON vuoto o non leggibile</p>');
                 return;
@@ -80,10 +73,23 @@
                 </th>`);
             });
 
-            // Creazione righe
+            // Creazione righe con supporto hyperlink
             const rows = jsonData.map(row => headers.map(h => {
                 const val = row[h];
-                return val && val.startsWith('http') ? `<a href="${val}" target="_blank">${val}</a>` : val || '';
+                if (!val) return '';
+
+                // Hyperlink oggetto JSON
+                if (typeof val === 'object' && val.url && val.text) {
+                    return `<span data-value="${val.text}"><a href="${val.url}" target="_blank">${val.text}</a></span>`;
+                }
+
+                // Hyperlink diretto come stringa
+                if (typeof val === 'string' && val.startsWith('http')) {
+                    return `<span data-value="${val}"><a href="${val}" target="_blank">${val}</a></span>`;
+                }
+
+                // Valore semplice
+                return val;
             }));
 
             // Inizializza DataTable
@@ -94,7 +100,10 @@
                 const column = this;
                 const container = $('div.filter-container', $('#filter-row th').eq(i));
 
-                let vals = column.data().unique().sort().toArray().map(d => d || '(Vuoto)');
+                let vals = column.data().unique().sort().toArray().map(d => {
+                    const match = /data-value="([^"]+)"/.exec(d);
+                    return match ? match[1] : d || '(Vuoto)';
+                });
 
                 vals.forEach(val => {
                     container.append(`<label>
@@ -102,7 +111,7 @@
                     </label>`);
                 });
 
-                // Ricerca
+                // Ricerca testuale
                 container.find('.filter-search').on('input', function() {
                     const query = $(this).val().toLowerCase();
                     container.find('label').each(function() {
@@ -125,10 +134,8 @@
         })
         .fail(function() {
             $('body').append('<p style="color:red">Errore nel caricamento del JSON</p>');
-            console.error("Errore caricamento JSON");
         });
     });
     </script>
 </body>
 </html>
-
