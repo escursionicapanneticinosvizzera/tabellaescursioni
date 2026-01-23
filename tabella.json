@@ -33,7 +33,7 @@
     "Difficoltà": "AD",
     "Giro ad anello": "Si",
     "Laghetto": "No",
-    "Capanna": "Non custodita",
+    "Capanna": "Non-Custodita",
     "Tipo di uscita": "Privata",
     "Attività": "Escursionismo"
   },
@@ -270,7 +270,7 @@
     "Difficoltà": "T1",
     "Giro ad anello": "Si",
     "Laghetto": "No",
-    "Capanna": "Non custodita",
+    "Capanna": "Non-Custodita",
     "Vetta": "Si",
     "Tipo di uscita": "Di Gruppo",
     "Attività": "Escursionismo"
