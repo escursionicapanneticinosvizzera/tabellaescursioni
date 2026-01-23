@@ -69,7 +69,7 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-    <h1>Banca dati percorsi in Canton Ticino</h1>
+    <h1>Tabella Escursioni</h1>
 
     <table id="excelTable">
         <thead>
@@ -159,4 +159,10 @@
 
         })
         .fail(function() {
-            $('body').append('<p style="color:red">Errore nel car
+            $('body').append('<p style="color:red">Errore nel caricamento del JSON</p>');
+            console.error("Errore caricamento JSON");
+        });
+    });
+    </script>
+</body>
+</html>
