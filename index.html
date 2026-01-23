@@ -9,24 +9,21 @@
 
     <!-- Stile personalizzato -->
     <style>
-        /* Sfondo pagina */
         body {
-            background-color: #f0f0f0; /* grigio chiaro */
             font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* grigio chiaro pagina */
             margin: 20px;
         }
 
         h1 {
             text-align: center;
-            margin-bottom: 20px;
         }
 
-        /* Stile header e filtri */
+        /* Header e filtri */
         thead th {
-            background-color: #555; /* grigio scuro */
-            color: #fff;
-            padding: 8px;
-            text-align: left;
+            background-color: #555; /* grigio scuro intestazione */
+            color: white;
+            vertical-align: top;
         }
 
         thead .filter-container {
@@ -36,8 +33,7 @@
             overflow-y: auto;
             font-size: 12px;
             padding: 2px;
-            background-color: #ddd; /* grigio chiaro per i filtri */
-            color: #000;
+            color: white;
         }
 
         .filter-container label {
@@ -46,37 +42,29 @@
             margin: 2px 0;
         }
 
-        .filter-search {
+        .filter-container input.filter-search {
             width: 95%;
             margin-bottom: 4px;
             padding: 2px;
         }
 
-        /* Tabelle DataTables */
+        /* Dati */
+        table.dataTable tbody tr {
+            background-color: #fff; /* bianco righe */
+            transition: background-color 0.2s;
+        }
+
+        table.dataTable tbody tr:hover {
+            background-color: #cce5ff; /* evidenziazione righe */
+        }
+
         table.dataTable th, table.dataTable td {
             vertical-align: top;
         }
 
-        /* Righe alternate */
-        table.dataTable tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        table.dataTable tbody tr:nth-child(odd) {
-            background-color: #fff;
-        }
-
-        /* Evidenziazione riga al passaggio del mouse */
-        #excelTable tbody tr:hover {
-            background-color: #cce5ff !important; /* azzurro chiaro */
-        }
-
-        /* Responsive filtri */
+        /* Media query per mobile */
         @media (max-width: 768px) {
-            thead .filter-container {
-                max-height: 150px;
-                font-size: 10px;
-            }
+            thead .filter-container { max-height: 150px; font-size: 10px; }
         }
     </style>
 
@@ -87,7 +75,7 @@
 <body>
     <h1>Tabella Escursioni</h1>
 
-    <table id="excelTable" class="display">
+    <table id="excelTable" class="display" style="width:100%">
         <thead>
             <tr id="header-row"></tr>
             <tr id="filter-row"></tr>
@@ -95,14 +83,12 @@
         <tbody></tbody>
     </table>
 
-    <!-- JS inline self-contained -->
     <script>
     const sheetJSON = 'tabella.json';
 
     $(document).ready(function() {
         $.getJSON(sheetJSON)
         .done(function(jsonData) {
-
             if (!jsonData.length) {
                 $('body').append('<p style="color:red">JSON vuoto o non leggibile</p>');
                 return;
@@ -120,7 +106,7 @@
                 </th>`);
             });
 
-            // Creazione righe
+            // Creazione righe, gestendo oggetti {text, url} per hyperlink
             const rows = jsonData.map(row => headers.map(h => {
                 const val = row[h];
                 if (!val) return '';
@@ -141,7 +127,12 @@
                 const column = this;
                 const container = $('div.filter-container', $('#filter-row th').eq(i));
 
-                let vals = column.data().unique().sort().toArray().map(d => d || '(Vuoto)');
+                let vals = column.data().unique().sort().toArray().map(d => {
+                    if (!d) return '(Vuoto)';
+                    const tmp = document.createElement('div');
+                    tmp.innerHTML = d;
+                    return tmp.textContent || tmp.innerText || d;
+                });
 
                 vals.forEach(val => {
                     container.append(`<label>
@@ -168,7 +159,6 @@
                     }
                 });
             });
-
         })
         .fail(function() {
             $('body').append('<p style="color:red">Errore nel caricamento del JSON</p>');
