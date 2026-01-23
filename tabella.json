@@ -150,7 +150,7 @@
     "Difficoltà": "T5",
     "Giro ad anello": "Si",
     "Laghetto": "Si",
-    "Capanna": "Si",
+    "Capanna": "Custodita",
     "Vetta": "Si",
     "Tipo di uscita": "Di Gruppo",
     "Attività": "Escursionismo"
@@ -250,7 +250,7 @@
     "Difficoltà": "T3",
     "Giro ad anello": "Si",
     "Laghetto": "Si",
-    "Capanna": "Si",
+    "Capanna": "Custodita",
     "Vetta": "Si",
     "Tipo di uscita": "Di Gruppo",
     "Attività": "Escursionismo"
@@ -269,8 +269,8 @@
     "Filtro distanza": "Oltre 20km",
     "Difficoltà": "T1",
     "Giro ad anello": "Si",
-    "Laghetto": "Custodita",
-    "Capanna": "Si",
+    "Laghetto": "No",
+    "Capanna": "Non custodita",
     "Vetta": "Si",
     "Tipo di uscita": "Di Gruppo",
     "Attività": "Escursionismo"
@@ -330,7 +330,7 @@
     "Difficoltà": "T3",
     "Giro ad anello": "Si",
     "Laghetto": "Si",
-    "Capanna": "Si",
+    "Capanna": "Custodita",
     "Vetta": "Si",
     "Tipo di uscita": "Di Gruppo",
     "Attività": "Escursionismo"
