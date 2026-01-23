@@ -9,57 +9,49 @@
 
     <!-- Stile personalizzato -->
     <style>
-        /* === SFONDO PAGINA === */
+        /* Sfondo pagina */
         body {
-            background-color: #e8e8e8;  /* grigio chiaro */
+            background-color: #f2f2f2;
             font-family: Arial, sans-serif;
             margin: 20px;
         }
 
         h1 {
             text-align: center;
-            color: #333333;
         }
 
-        /* === INTESTAZIONE (nomi colonne) === */
+        /* Intestazione tabella */
         #excelTable thead tr#header-row th {
-            background-color: #3a3a3a;   /* grigio scuro */
-            color: #ffffff;
-            border-bottom: 2px solid #1f1f1f;
-            font-size: 14px;
+            background-color: #666666;  /* grigio scuro */
+            color: #ffffff;             /* testo bianco */
+            padding: 6px;
         }
 
-        /* === RIGA FILTRI === */
+        /* Riga filtri */
         #excelTable thead tr#filter-row th {
-            background-color: #555555;   /* grigio medio */
+            background-color: #d0d0d0;  /* grigio chiaro */
+            padding: 6px;
         }
 
-        /* testo filtri */
-        .filter-container label {
-            color: #ffffff;
-            display: block;
-            cursor: pointer;
-            margin: 2px 0;
-        }
-
-        /* input ricerca filtri */
-        .filter-search {
-            width: 95%;
-            margin-bottom: 4px;
-            padding: 2px;
-            background-color: #f2f2f2;
-            color: #333;
-            border: 1px solid #ccc;
-            border-radius: 2px;
-        }
-
-        /* layout filtri */
-        thead .filter-container {
+        .filter-container {
             display: flex;
             flex-direction: column;
             max-height: 200px;
             overflow-y: auto;
             font-size: 12px;
+            padding: 2px;
+        }
+
+        .filter-container label {
+            display: block;
+            cursor: pointer;
+            margin: 2px 0;
+            color: #222222; /* testo scuro leggibile */
+        }
+
+        .filter-search {
+            width: 95%;
+            margin-bottom: 4px;
             padding: 2px;
         }
 
@@ -70,42 +62,6 @@
         @media (max-width: 768px) {
             thead .filter-container { max-height: 150px; font-size: 10px; }
         }
-
-        /* === CORPO TABELLA (DATI JSON) === */
-        #excelTable tbody {
-            background-color: #fafafa;
-        }
-
-        #excelTable tbody tr:nth-child(even) {
-            background-color: #f0f0f0;
-        }
-
-        #excelTable tbody tr:hover {
-            background-color: #e0e0e0;
-        }
-
-        /* === LINK === */
-        #excelTable tbody a {
-            color: #333333;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        #excelTable tbody a:hover {
-            text-decoration: underline;
-        }
-
-        /* bordi tabella */
-        #excelTable {
-            width: 100%;
-            border-collapse: collapse;
-            border: 1px solid #ccc;
-        }
-
-        #excelTable th, #excelTable td {
-            border-right: 1px solid #ddd;
-            padding: 4px;
-        }
     </style>
 
     <!-- jQuery e DataTables JS -->
@@ -113,7 +69,7 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-    <h1>Tabella Escursioni</h1>
+    <h1>Banca dati percorsi in Canton Ticino</h1>
 
     <table id="excelTable">
         <thead>
@@ -125,7 +81,7 @@
 
     <!-- JS inline self-contained -->
     <script>
-    // Percorso del file JSON
+    // Percorso del file JSON (deve essere nella root del repo)
     const sheetJSON = 'tabella.json';
 
     $(document).ready(function() {
@@ -203,10 +159,4 @@
 
         })
         .fail(function() {
-            $('body').append('<p style="color:red">Errore nel caricamento del JSON</p>');
-            console.error("Errore caricamento JSON");
-        });
-    });
-    </script>
-</body>
-</html>
+            $('body').append('<p style="color:red">Errore nel car
