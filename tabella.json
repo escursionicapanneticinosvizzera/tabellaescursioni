@@ -14,9 +14,9 @@
     "Difficoltà": "T2",
     "Giro ad anello": "Si",
     "Laghetto": "Si",
-    "Capanna": "No",
-    "Ristoro": "No",
-    "Gita per bambini": "Si"
+    "Capanna": "Custodita",
+    "Tipo di uscita": "Di Gruppo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -30,12 +30,12 @@
     "Distanza": 0,
     "Filtro dislivello": "1001-1500m",
     "Filtro distanza": "Da 0 a 5km",
-    "Difficoltà": "T3",
+    "Difficoltà": "AD",
     "Giro ad anello": "Si",
     "Laghetto": "No",
-    "Capanna": "Si",
-    "Ristoro": "Si",
-    "Gita per bambini": "Si"
+    "Capanna": "Non custodita",
+    "Tipo di uscita": "Privata"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -52,9 +52,9 @@
     "Difficoltà": "T4",
     "Giro ad anello": "Si",
     "Laghetto": "Si",
-    "Capanna": "Si",
-    "Ristoro": "Si",
-    "Gita per bambini": "Si"
+    "Capanna": "No",
+    "Tipo di uscita": "Privata"
+    "Attività": "Arrampicata"
   },
   {
     "Data": "13.02.2026",
@@ -68,12 +68,12 @@
     "Distanza": 3,
     "Filtro dislivello": "0-500m",
     "Filtro distanza": "Da 0 a 5km",
-    "Difficoltà": "T5",
+    "Difficoltà": "D",
     "Giro ad anello": "Si",
     "Laghetto": "Si",
     "Capanna": "Si",
-    "Ristoro": "Si",
-    "Gita per bambini": "Si"
+    "Tipo di uscita": "Di Gruppo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -87,12 +87,13 @@
     "Distanza": 6,
     "Filtro dislivello": "501-1000m",
     "Filtro distanza": "Da 5 a 10km",
-    "Difficoltà": "T3",
+    "Difficoltà": "PD",
     "Giro ad anello": "Si",
     "Laghetto": "Si",
-    "Capanna": "Si",
-    "Ristoro": "Si",
-    "Gita per bambini": "Si"
+    "Capanna": "Custodita",
+    "Vetta": "No",
+    "Tipo di uscita": "Di Gruppo"
+    "Attività": "Alpinismo"
   },
   {
     "Data": "13.02.2026",
@@ -106,12 +107,13 @@
     "Distanza": 18,
     "Filtro dislivello": "0-500m",
     "Filtro distanza": "Da 15 a 20km",
-    "Difficoltà": "T1",
+    "Difficoltà": "F",
     "Giro ad anello": "No",
     "Laghetto": "No",
     "Capanna": "No",
-    "Ristoro": "No",
-    "Gita per bambini": "No"
+    "Vetta": "Si",
+    "Tipo di uscita": "Di Gruppo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -128,9 +130,10 @@
     "Difficoltà": "T4",
     "Giro ad anello": "Si",
     "Laghetto": "Si",
-    "Capanna": "Si",
-    "Ristoro": "Si",
-    "Gita per bambini": "Si"
+    "Capanna": "No",
+    "Vetta": "Si",
+    "Tipo di uscita": "Di Gruppo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -148,8 +151,9 @@
     "Giro ad anello": "Si",
     "Laghetto": "Si",
     "Capanna": "Si",
-    "Ristoro": "Si",
-    "Gita per bambini": "Si"
+    "Vetta": "Si",
+    "Tipo di uscita": "Di Gruppo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -167,8 +171,9 @@
     "Giro ad anello": "Si",
     "Laghetto": "Si",
     "Capanna": "Si",
-    "Ristoro": "Si",
-    "Gita per bambini": "Si"
+    "Vetta": "Si",
+    "Tipo di uscita": "Di Gruppo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -185,9 +190,10 @@
     "Difficoltà": "T1",
     "Giro ad anello": "Si",
     "Laghetto": "Si",
-    "Capanna": "Si",
-    "Ristoro": "Si",
-    "Gita per bambini": "Si"
+    "Capanna": "Custodita",
+    "Vetta": "Si",
+    "Tipo di uscita": "Di Gruppo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -204,9 +210,10 @@
     "Difficoltà": "T4",
     "Giro ad anello": "Si",
     "Laghetto": "Si",
-    "Capanna": "Si",
-    "Ristoro": "Si",
-    "Gita per bambini": "Si"
+    "Capanna": "No",
+    "Vetta": "Si",
+    "Tipo di uscita": "Di Gruppo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -224,8 +231,9 @@
     "Giro ad anello": "No",
     "Laghetto": "No",
     "Capanna": "No",
-    "Ristoro": "No",
-    "Gita per bambini": "No"
+    "Vetta": "Si",
+    "Tipo di uscita": "Di Gruppo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -243,8 +251,9 @@
     "Giro ad anello": "Si",
     "Laghetto": "Si",
     "Capanna": "Si",
-    "Ristoro": "Si",
-    "Gita per bambini": "Si"
+    "Vetta": "Si",
+    "Tipo di uscita": "Di Gruppo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -260,10 +269,11 @@
     "Filtro distanza": "Oltre 20km",
     "Difficoltà": "T1",
     "Giro ad anello": "Si",
-    "Laghetto": "Si",
+    "Laghetto": "Custodita",
     "Capanna": "Si",
-    "Ristoro": "Si",
-    "Gita per bambini": "Si"
+    "Vetta": "Si",
+    "Tipo di uscita": "Di Gruppo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -281,8 +291,9 @@
     "Giro ad anello": "No",
     "Laghetto": "No",
     "Capanna": "No",
-    "Ristoro": "No",
-    "Gita per bambini": "No"
+    "Vetta": "No",
+    "Tipo di uscita": "Di Gruppo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -300,8 +311,9 @@
     "Giro ad anello": "Si",
     "Laghetto": "Si",
     "Capanna": "Si",
-    "Ristoro": "Si",
-    "Gita per bambini": "Si"
+    "Vetta": "Si",
+    "Tipo di uscita": "Di Gruppo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -319,7 +331,8 @@
     "Giro ad anello": "Si",
     "Laghetto": "Si",
     "Capanna": "Si",
-    "Ristoro": "Si",
-    "Gita per bambini": "Si"
+    "Vetta": "Si",
+    "Tipo di uscita": "Di Gruppo"
+    "Attività": "Escursionismo"
   }
 ]
