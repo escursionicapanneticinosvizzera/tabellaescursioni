@@ -7,83 +7,86 @@
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
-    <!-- STILE PERSONALIZZATO -->
+    <!-- Stile personalizzato -->
     <style>
+        /* === SFONDO PAGINA === */
         body {
+            background-color: #e8e8e8;  /* grigio chiaro */
             font-family: Arial, sans-serif;
-            background-color: #f0f4f3;
-            padding: 20px;
+            margin: 20px;
         }
 
         h1 {
-            color: #1f4037;
-        }
-
-        /* === TABELLA === */
-        #excelTable {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        table.dataTable th,
-        table.dataTable td {
-            vertical-align: top;
-            padding: 6px;
+            text-align: center;
+            color: #333333;
         }
 
         /* === INTESTAZIONE (nomi colonne) === */
         #excelTable thead tr#header-row th {
-            background-color: #2f5d50; /* verde bosco */
+            background-color: #3a3a3a;   /* grigio scuro */
             color: #ffffff;
-            border-bottom: 2px solid #1f4037;
+            border-bottom: 2px solid #1f1f1f;
             font-size: 14px;
         }
 
         /* === RIGA FILTRI === */
         #excelTable thead tr#filter-row th {
-            background-color: #3f7a6b;
+            background-color: #555555;   /* grigio medio */
         }
 
-        thead .filter-container {
-            display: flex;
-            flex-direction: column;
-            max-height: 180px;
-            overflow-y: auto;
-            font-size: 12px;
-            padding: 4px;
-        }
-
+        /* testo filtri */
         .filter-container label {
+            color: #ffffff;
             display: block;
             cursor: pointer;
             margin: 2px 0;
-            color: #ffffff;
         }
 
+        /* input ricerca filtri */
         .filter-search {
             width: 95%;
-            margin-bottom: 6px;
-            padding: 4px;
-            border-radius: 4px;
-            border: none;
+            margin-bottom: 4px;
+            padding: 2px;
+            background-color: #f2f2f2;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+        }
+
+        /* layout filtri */
+        thead .filter-container {
+            display: flex;
+            flex-direction: column;
+            max-height: 200px;
+            overflow-y: auto;
+            font-size: 12px;
+            padding: 2px;
+        }
+
+        table.dataTable th, table.dataTable td {
+            vertical-align: top;
+        }
+
+        @media (max-width: 768px) {
+            thead .filter-container { max-height: 150px; font-size: 10px; }
         }
 
         /* === CORPO TABELLA (DATI JSON) === */
         #excelTable tbody {
-            background-color: #f7f9f8;
+            background-color: #fafafa;
         }
 
         #excelTable tbody tr:nth-child(even) {
-            background-color: #eef3f1;
+            background-color: #f0f0f0;
         }
 
         #excelTable tbody tr:hover {
-            background-color: #d9ebe6;
+            background-color: #e0e0e0;
         }
 
         /* === LINK === */
         #excelTable tbody a {
-            color: #1f6f5c;
+            color: #333333;
             text-decoration: none;
             font-weight: 500;
         }
@@ -92,12 +95,16 @@
             text-decoration: underline;
         }
 
-        /* === RESPONSIVE === */
-        @media (max-width: 768px) {
-            thead .filter-container {
-                max-height: 140px;
-                font-size: 10px;
-            }
+        /* bordi tabella */
+        #excelTable {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+        }
+
+        #excelTable th, #excelTable td {
+            border-right: 1px solid #ddd;
+            padding: 4px;
         }
     </style>
 
@@ -105,7 +112,6 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 </head>
-
 <body>
     <h1>Tabella Escursioni</h1>
 
@@ -117,13 +123,17 @@
         <tbody></tbody>
     </table>
 
-    <!-- JS -->
+    <!-- JS inline self-contained -->
     <script>
+    // Percorso del file JSON
     const sheetJSON = 'tabella.json';
 
     $(document).ready(function() {
+        console.log("DOM pronto");
+
         $.getJSON(sheetJSON)
         .done(function(jsonData) {
+            console.log("JSON caricato:", jsonData.slice(0, 100));
 
             if (!jsonData.length) {
                 $('body').append('<p style="color:red">JSON vuoto o non leggibile</p>');
@@ -132,65 +142,56 @@
 
             const headers = Object.keys(jsonData[0]);
 
-            // Header e filtri
+            // Creazione header e filtri
             headers.forEach(h => {
                 $('#header-row').append(`<th>${h}</th>`);
-                $('#filter-row').append(`
-                    <th>
-                        <div class="filter-container">
-                            <input type="text" class="filter-search" placeholder="Cerca...">
-                        </div>
-                    </th>
-                `);
+                $('#filter-row').append(`<th>
+                    <div class="filter-container">
+                        <input type="text" class="filter-search" placeholder="Cerca...">
+                    </div>
+                </th>`);
             });
 
-            // Righe
-            const rows = jsonData.map(row =>
-                headers.map(h => {
-                    const val = row[h];
-                    if (!val) return '';
-                    if (typeof val === 'object' && val.url && val.text) {
-                        return `<a href="${val.url}" target="_blank">${val.text}</a>`;
-                    }
-                    if (typeof val === 'string' && val.startsWith('http')) {
-                        return `<a href="${val}" target="_blank">${val}</a>`;
-                    }
-                    return val;
-                })
-            );
+            // Creazione righe, gestendo oggetti {text, url} per hyperlink
+            const rows = jsonData.map(row => headers.map(h => {
+                const val = row[h];
+                if (!val) return '';
+                if (typeof val === 'object' && val.url && val.text) {
+                    return `<a href="${val.url}" target="_blank">${val.text}</a>`;
+                }
+                if (typeof val === 'string' && val.startsWith('http')) {
+                    return `<a href="${val}" target="_blank">${val}</a>`;
+                }
+                return val;
+            }));
 
-            const table = $('#excelTable').DataTable({
-                data: rows,
-                orderCellsTop: true
-            });
+            // Inizializza DataTable
+            const table = $('#excelTable').DataTable({ data: rows, orderCellsTop: true });
 
-            // Filtri per colonna
+            // Filtro per colonna
             table.columns().every(function(i) {
                 const column = this;
                 const container = $('div.filter-container', $('#filter-row th').eq(i));
 
-                let vals = column.data().unique().sort().toArray().map(v => v || '(Vuoto)');
+                let vals = column.data().unique().sort().toArray().map(d => d || '(Vuoto)');
 
                 vals.forEach(val => {
-                    container.append(`
-                        <label>
-                            <input type="checkbox" value="${val}"> ${val}
-                        </label>
-                    `);
+                    container.append(`<label>
+                        <input type="checkbox" class="col-filter" data-col="${i}" value="${val}"> ${val}
+                    </label>`);
                 });
 
+                // Ricerca
                 container.find('.filter-search').on('input', function() {
-                    const q = $(this).val().toLowerCase();
+                    const query = $(this).val().toLowerCase();
                     container.find('label').each(function() {
-                        $(this).toggle($(this).text().toLowerCase().includes(q));
+                        $(this).toggle($(this).text().toLowerCase().includes(query));
                     });
                 });
 
-                container.on('change', 'input[type="checkbox"]', function() {
-                    const selected = container.find('input:checked')
-                        .map(function(){ return $(this).val(); })
-                        .get();
-
+                // Checkbox filtro
+                container.on('change', 'input.col-filter', function() {
+                    const selected = container.find('input:checked').map(function(){ return $(this).val(); }).get();
                     if (selected.length) {
                         const regex = selected.map(v => v === '(Vuoto)' ? '^$' : v).join('|');
                         column.search(regex, true, false).draw();
@@ -203,6 +204,7 @@
         })
         .fail(function() {
             $('body').append('<p style="color:red">Errore nel caricamento del JSON</p>');
+            console.error("Errore caricamento JSON");
         });
     });
     </script>
