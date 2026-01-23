@@ -19,13 +19,14 @@
             text-align: center;
         }
 
-        /* Header e filtri */
+        /* Header */
         thead th {
             background-color: #555; /* grigio scuro intestazione */
             color: white;
             vertical-align: top;
         }
 
+        /* Filtri */
         thead .filter-container {
             display: flex;
             flex-direction: column;
@@ -33,19 +34,21 @@
             overflow-y: auto;
             font-size: 12px;
             padding: 2px;
-            color: white;
+            background-color: #666; /* grigio scuro filtri */
         }
 
         .filter-container label {
             display: block;
             cursor: pointer;
             margin: 2px 0;
+            color: #000; /* testo checkbox nero per leggibilità */
         }
 
         .filter-container input.filter-search {
             width: 95%;
             margin-bottom: 4px;
             padding: 2px;
+            color: #000;
         }
 
         /* Dati */
