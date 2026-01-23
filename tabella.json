@@ -16,7 +16,7 @@
     "Laghetto": "Si",
     "Capanna": "Custodita",
     "Tipo di uscita": "Di Gruppo"
-    "Attivita": "Escursionismo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -35,7 +35,7 @@
     "Laghetto": "No",
     "Capanna": "Non custodita",
     "Tipo di uscita": "Privata"
-    "Attivita": "Escursionismo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -54,7 +54,7 @@
     "Laghetto": "Si",
     "Capanna": "No",
     "Tipo di uscita": "Privata"
-    "Attivita": "Arrampicata"
+    "Attività": "Arrampicata"
   },
   {
     "Data": "13.02.2026",
@@ -73,7 +73,7 @@
     "Laghetto": "Si",
     "Capanna": "Si",
     "Tipo di uscita": "Di Gruppo"
-    "Attivita": "Escursionismo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -93,7 +93,7 @@
     "Capanna": "Custodita",
     "Vetta": "No",
     "Tipo di uscita": "Di Gruppo"
-    "Attivita": "Alpinismo"
+    "Attività": "Alpinismo"
   },
   {
     "Data": "13.02.2026",
@@ -113,7 +113,7 @@
     "Capanna": "No",
     "Vetta": "Si",
     "Tipo di uscita": "Di Gruppo"
-    "Attivita": "Escursionismo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -133,7 +133,7 @@
     "Capanna": "No",
     "Vetta": "Si",
     "Tipo di uscita": "Di Gruppo"
-    "Attivita": "Escursionismo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -153,7 +153,7 @@
     "Capanna": "Si",
     "Vetta": "Si",
     "Tipo di uscita": "Di Gruppo"
-    "Attivita": "Escursionismo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -173,7 +173,7 @@
     "Capanna": "Si",
     "Vetta": "Si",
     "Tipo di uscita": "Di Gruppo"
-    "Attivita": "Escursionismo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -193,7 +193,7 @@
     "Capanna": "Custodita",
     "Vetta": "Si",
     "Tipo di uscita": "Di Gruppo"
-    "Attivita": "Escursionismo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -213,7 +213,7 @@
     "Capanna": "No",
     "Vetta": "Si",
     "Tipo di uscita": "Di Gruppo"
-    "Attivita": "Escursionismo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -233,7 +233,7 @@
     "Capanna": "No",
     "Vetta": "Si",
     "Tipo di uscita": "Di Gruppo"
-    "Attivita": "Escursionismo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -253,7 +253,7 @@
     "Capanna": "Si",
     "Vetta": "Si",
     "Tipo di uscita": "Di Gruppo"
-    "Attivita": "Escursionismo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -273,7 +273,7 @@
     "Capanna": "Si",
     "Vetta": "Si",
     "Tipo di uscita": "Di Gruppo"
-    "Attivita": "Escursionismo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -293,7 +293,7 @@
     "Capanna": "No",
     "Vetta": "No",
     "Tipo di uscita": "Di Gruppo"
-    "Attivita": "Escursionismo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -313,7 +313,7 @@
     "Capanna": "Si",
     "Vetta": "Si",
     "Tipo di uscita": "Di Gruppo"
-    "Attivita": "Escursionismo"
+    "Attività": "Escursionismo"
   },
   {
     "Data": "13.02.2026",
@@ -333,6 +333,6 @@
     "Capanna": "Si",
     "Vetta": "Si",
     "Tipo di uscita": "Di Gruppo"
-    "Attivita": "Escursionismo"
+    "Attività": "Escursionismo"
   }
 ]
