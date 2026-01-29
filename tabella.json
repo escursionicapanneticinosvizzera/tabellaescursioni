@@ -19,7 +19,7 @@
   {
     "Data": "2026.01.05",
     "Zona": "Valle Maggia",
-    "Percorso": { "text": "Monti di Rima e Monte di Cima, "url": "https://map.geo.admin.ch/?topic=ech" },
+    "Percorso": { "text": "Monti di Rima e Monte di Cima", "url": "https://map.geo.admin.ch/?topic=ech" },
     "Partenza": "Broglio",
     "Arrivo": "Broglio",
     "Dislivello": 980,
